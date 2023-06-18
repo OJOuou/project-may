@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.project.projectmay.review.repository.ReviewRepository">
+	
+	
+	<select id="selectReviewList" resultType="reviewVO">
+		/* reviewMapper.selectReviewList 리뷰 조회 */
+		SELECT store_seq, 
+				store_name, 
+				review_start_date, 
+				review_end_date, 
+				support_type, 
+				support_price, 
+				support_menu, 
+				store_tel, 
+				booking_tel, 
+				command, 
+				holiday, 
+				booking_yn
+		FROM review_store
+		ORDER BY 
+	</select>
+</mapper>
+

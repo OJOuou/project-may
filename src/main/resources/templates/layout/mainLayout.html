@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+	<html lang="ko" 
+			xmlns:th="http://www.thymeleaf.org"
+  			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8"/>
+    	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    	<script src="/bootstrap/js/bootstrap.min.js"></script>
+    	<!-- 전체적으로 사용할 css, script-->
+    	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	</head>
+ 
+	<header th:replace="fragment/header :: headerFragment"></header>
+	<th:block layout:fragment="script"> </th:block>
+	<div class="container-fluid px-0">
+	    <div layout:fragment="content"></div>
+	</div>
+  	<footer th:replace="fragment/footer :: footerFragment"></footer>
+</html>
