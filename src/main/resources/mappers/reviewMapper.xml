@@ -5,7 +5,7 @@
 <mapper namespace="com.project.projectmay.review.repository.ReviewRepository">
 	
 	
-	<select id="selectReviewList" resultType="reviewVO">
+	<select id="selectReviewList" resultType="ReviewVO">
 		/* reviewMapper.selectReviewList 리뷰 조회 */
 		SELECT store_seq, 
 				store_name, 
@@ -20,7 +20,45 @@
 				holiday, 
 				booking_yn
 		FROM review_store
-		ORDER BY 
+		ORDER BY review_end_date ASC
 	</select>
+	
+	<insert id="insertReview" parameterType="ReviewVO">
+		/* reviewMapper.insertReview 리뷰 등 */
+		INSERT INTO review_store
+					(
+						store_name
+						, review_start_date
+						, review_end_date
+						, support_type
+						, support_price
+						, support_menu
+						, store_tel
+						, booking_tel
+						, holiday
+						, booking_yn
+						, store_address
+						, command
+					)
+					VALUES
+						(
+							#{storeName}
+							, #{reviewStartDate}
+							, #{reviewEndDate}
+							, #{supportType}
+							, #{supportPrice}
+							, #{supportMenu}
+							, #{storeTel}
+							, #{bookingTel}
+							, #{holiday}
+							, 'N'
+							, #{storeAddress}
+							, #{command}
+						)
+
+	</insert>
+	
+	
+	
 </mapper>
 

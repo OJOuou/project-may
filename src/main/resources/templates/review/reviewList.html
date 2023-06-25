@@ -5,16 +5,242 @@
       >
  
 <th:block layout:fragment="script" > 
+<script th:inline="javascript">
+	
+
+$(function(){
+	// 시작일 set
+	$("#reviewStartDate").val(moment(new Date()).format('YYYY-MM-DD'));
+	// 종료일 set
+	$("#reviewEndDate").val(moment(new Date()).format('YYYY-MM-DD'));
+	// 달력 set
+	$('input[name="daterange"]').daterangepicker({
+		opens: 'left', // 'left'/'right'/'center',
+		startDate : new Date(),
+		endDate : new Date(),
+	    locale: {
+	    	format: 'YYYY-MM-DD',
+	    	separator: ' ~ '
+	    }
+  	}, function(start, end, label) {
+		// console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  	}).on('apply.daterangepicker', function(ev, picker) {
+	    $("#reviewStartDate").val(picker.startDate.format('YYYY-MM-DD'));
+		$("#reviewEndDate").val(picker.endDate.format('YYYY-MM-DD'));
+	});
+});
+
+/** 신규 등록 화면 show/hide */
+const showRegist = () => {
+	$("#registArea").toggleClass("d-none");
+}
+
+/** 제공 타입 onchange */
+function changeSupportType(){
+	if($("[name='supportType']:checked").val() === "PRICE"){
+		$("#supportPrice").removeClass("d-none")
+		$("#supportMenu").addClass("d-none")
+	} else if($("[name='supportType']:checked").val() === "MENU"){
+		$("#supportMenu").removeClass("d-none")
+		$("#supportPrice").addClass("d-none")
+	}
+}
+
+/** 저장 */
+const save = async () => {
+	if(!isValid()){
+		
+		return;
+	}
+	
+	try{
+		
+		let param = {
+			storeName : $("#storeName").val()
+			, reviewStartDate : $("#reviewStartDate").val()
+			, reviewEndDate : $("#reviewEndDate").val()
+			, supportType : $("[name='supportType']:checked").val()
+			, supportPrice : $("#supportPrice").val()
+			, supportMenu : $("#supportMenu").val()
+			, storeTel : $("#storeTel").val()
+			, bookingTel : $("#bookingTel").val()
+			, holiday : $("#holiday").val()
+			, storeAddress : $("#storeAddress").val()
+			, command : $("#command").val()
+		}
+		
+		
+		let res = await post("/review/regist", param)
+		// console.log(JSON.stringify(res))
+		if(!isEmpty(res)){
+			alert("오류가 발생했습니다.")
+		} else {
+			if(res.code === "0000"){
+				alert("등록되었습니다.")
+				location.reload()
+			} else {
+				alert("등록에 실패했습니다.")
+			}
+		}
+		
+	
+	} catch{
+		
+	}
+	
+}
+
+/** 유효성 체크 */
+const isValid = () => {
+	
+	if(isTrimEmpty($("#storeName").val())){
+		alert("업체명을 입력해 주세요!");
+		return false;
+	}
+	
+	if($("[name='supportType']:checked").val() === "PRICE"){
+		if(isTrimEmpty($("#supportPrice").val())){
+			alert("제공금액을 입력해 주세요!");
+			return false;
+		}
+	} else {
+		if(isTrimEmpty($("#supportMenu").val())){
+			alert("제공메뉴를 입력해 주세요!");
+			return false;
+		}
+	}
+	
+	if(isTrimEmpty($("#reviewStartDate").val()) || isTrimEmpty($("#reviewEndDate").val())){
+		alert("예약기간을 입력해 주세요!");
+		return false;
+	}
+	
+	// if(isTrimEmpty($("#storeAddress").val())){
+	//		alert("주소를 입력해 주세요!");
+	//		return false;
+	// }
+	
+	if(isTrimEmpty($("#storeTel").val())){
+		alert("매장 전화번호 입력해 주세요!");
+		return false;
+	}
+	
+	if(isTrimEmpty($("#bookingTel").val())){
+		alert("예약 전화번호 입력해 주세요!");
+		return false;
+	}
+	
+	//if(isTrimEmpty($("#holiday").val())){
+	//	alert("매장 휴무 정보를 입력해 주세요!");
+	//	return false;
+	//}
 	
 	
+	
+	return true;
+} 
+
+	
+</script>
 </th:block>
  
 <div layout:fragment="content">
 	<div class="p-3">
-  		<ul>
-			<li></li>	  
+		<div class="section-line"></div>
+		<div class="w-100 d-flex justify-content-end">
+			<div class="store-regist-button" onclick="showRegist()" >+</div>
+		</div>
+		<div class="w-80 p-3 regist-store mobile d-none" id="registArea">
+			<div class="regist-div d-flex flex-wrap justify-content-start align-items-center">
+				<input type="text" class="form-control w-33 me-3 mobile" id="storeName" placeholder="업체명(필수 *)"/>
+				<div class="mb-2 w-30 d-flex justify-content-end align-items-center mobile">
+					<input type="radio" class="review-check-input me-2 mt-0" name="supportType" id="supportType_price" value="PRICE" onchange="changeSupportType()" checked /><label class="form-check-label me-3" for="supportType_price">금액지원</label>
+					<input type="radio" class="review-check-input me-2 mt-0" name="supportType" id="supportType_menu" value="MENU" onchange="changeSupportType()" /><label class="form-check-label me-3"  for="supportType_menu">메뉴지원</label>
+				</div>
+				<input type="text" class="form-control w-30 me-2 mobile" id="supportPrice" placeholder="지원금액(필수 *)"/>
+				<input type="text" class="form-control w-30 me-2 mobile d-none" id="supportMenu" placeholder="지원메뉴(필수 *)"/>
+			</div>
+			<div class="regist-div d-flex flex-wrap justify-content-start align-items-center">
+				<input type="text" class="form-control w-30 me-3 mobile" id="reviewDate" name="daterange" placeholder="리뷰기간(필수 *)"/>
+				<input type="hidden" id="reviewStartDate" />
+				<input type="hidden" id="reviewEndDate" />
+				<input type="text" class="form-control w-60 mobile" id="storeAddress" placeholder="주소"/>
+			</div>
+			<div class="regist-div d-flex flex-wrap  justify-content-start align-items-center mobile">
+				<input type="text" class="form-control w-30 mobile me-3" id="storeTel" placeholder="매장 전화번호(필수 *)"/>
+				<input type="text" class="form-control w-30 mobile me-3" id="bookingTel" placeholder="예약 전화번호(필수 *)"/>
+				<input type="text" class="form-control w-30 mobile" id="holiday" placeholder="휴무일"/>
+			</div>
+			<div class="d-flex flex-wrap justify-content-between">
+				<div class="w-80 d-flex flex-wrap  justify-content-start align-items-center mobile">
+					<input type="text" class="form-control w-80 mobile" id="command" placeholder="참고사항"/>
+				</div>
+				<div class="w-20 text-right mobile">
+					<img src="/images/icon/enter.png" class="enter-image" onclick="save()" />	
+				</div>
+			</div>
+		</div>
+		<div class="w-95 mx-auto mt-5 d-flex flex-wrap justify-content-start"  >
+			<div class="w-31 store-box me-3" >
+				<span class="top-badge badge-black">기간임박</span>
+				<h3 class="">가맹점명을 여기에</h3>
+				<div class="py-2 booking-period-box">
+					<p class="text-center">예약 가능 기간</p>
+					<p class="text-center booking-period">2023-05-22 ~ 2023-05-29</p>
+				</div>
+				<p><span class="font-bold">주소</span> 상수점 상수역 5번출구</p> 
+				<p><span class="font-bold">매장</span> 02-333-4040</p>  
+				<p onclick="location.href='tel:01020938300'"><span class="font-bold">예약</span> 010-2093-8300</p> 
+				<p><span class="font-bold">체크사항</span> 금/토 휴무</p>  
+				<p class="mt-2 support-item">
+					<span class="float-right" >30,000원</span>
+				</p>
+			</div>
+			<div class="w-31 store-box me-3" >
+				<span class="top-badge badge-red">예약완료</span>
+				<h3>가맹점명을 여기에</h3>
+				<div class="py-2 booking-period-box">
+					<p class="text-center">예약 가능 기간</p>
+					<p class="text-center booking-period">2023-05-22 ~ 2023-05-29</p>
+				</div>
+				<p><span class="font-bold">주소</span> 은평점</p>  
+				<p><span class="font-bold">매장</span> 02-333-4040</p>  
+				<p onclick="location.href='tel:01020938300'"><span class="font-bold">예약</span> 010-2093-8300</p> 
+				<p><span class="font-bold">체크사항</span> 금/토 휴무</p> 
+				<p class="mt-2 support-item">
+					<span class="float-right" >30,000원</span>
+				</p>
+			</div>
+			<div class="w-31 store-box me-3" >
+				<h3>가맹점명을 여기에</h3>
+				<div class="py-2 booking-period-box">
+					<p class="text-center">예약 가능 기간</p>
+					<p class="text-center booking-period">2023-05-22 ~ 2023-05-29</p>
+				</div>
+				<p><span class="font-bold">주소</span> 연신내역 연신내점</p> 
+				<p><span class="font-bold">매장</span> 02-333-4040</p>  
+				<p onclick="location.href='tel:01020938300'"><span class="font-bold">예약</span> 010-2093-8300</p> 
+				<p><span class="font-bold">체크사항</span> 금/토 휴무</p> 
+				<div class="booking-expire">기간만료</div> 
+				<p class="mt-2 support-item">
+					<span class="float-right" >샤브샤브 + 소고기한접시 세트</span>
+				</p>
+			</div>
+		</div>
+		<div class="mt-5 d-flex flex-wrap justify-content-between"  >
+			<th:block th:if="${!#lists.isEmpty(list)}" >
+				<div class="w-33 store-box" th:each="store : ${list}">
+					<h3>[[${store.storeName}]]</h1>
+					<p>[[${store.reviewStartDate + '~' + store.reviewEndDate}]]</p>
+					<p>[[${#strings.equals(store.supportType, 'PRICE') ?  store.supportPrice + '원' : store.supportMenu}]]</p>
+					<p>[[${store.storeTel}]]</p>  
+					<p>[[${store.bookingTel}]]</p> 
+					<p>[[${store.holiday}]]</p> 
+					<p>[[${store.bookingYn}]]</p> 
+				</div>
+			</th:block>
 			
-		</ul>
+		</div>
 	</div>
 </div>
 
