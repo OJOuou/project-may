@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="headerFragment">
+	<script>
+		function menuTrigger(){
+			$("#burgerMenu").toggleClass(" active")
+		}
+	</script>
+    <div class="header_part d-flex justify-content-between align-items-center">
+		<div class="d-flex align-items-center" onclick="menuTrigger()">
+			<a id="burgerMenu" class="menu-trigger" >
+			  <span></span>
+			  <span></span>
+			  <span></span>
+			</a>
+		</div>
+		<div class="site_logo">새벽서점</div>
+		<div class="site_title">새벽서점</div>
+		<div class="w-50 position-relative">
+			<input type="text" id="search" class="search_input" />
+			<img src="/images/icon/search_btn.png" class="search_btn" />
+		</div>
+		<div class="">
+			<img src="/images/icon/user.png" class="header_icons user_btn" />
+			<img src="/images/icon/like.png" class="header_icons like_btn" />
+			<img src="/images/icon/cart.png" class="header_icons cart_btn" />
+		</div>
+	</div>
+</header>
+</html>

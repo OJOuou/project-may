@@ -69,6 +69,7 @@ const save = async () => {
 			, command : $("#command").val()
 		}
 		
+		//documnet.getElementById("storeName").value
 		
 		let res = await post("/review/regist", param)
 		// console.log(JSON.stringify(res))
@@ -134,6 +135,7 @@ const isValid = () => {
 	//	alert("매장 휴무 정보를 입력해 주세요!");
 	//	return false;
 	//}
+	
 	
 	
 	
@@ -243,8 +245,6 @@ const isValid = () => {
 		</div>
 	</div>
 </div>
-
-
 
 
 </html>

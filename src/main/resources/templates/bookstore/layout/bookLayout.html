@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+	<html lang="ko" 
+			xmlns:th="http://www.thymeleaf.org"
+  			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+
+	<th:block th:replace="bookstore/fragment/config :: configFragment"> </th:block>
+		
+	<body>
+        <div id="parent_wrapper">
+			<header th:replace="bookstore/fragment/header :: headerFragment"></header>
+			<side th:replace="bookstore/fragment/side :: sideFragment"></side>
+    		<div layout:fragment="content">
+				<th:block layout:fragment="script"> </th:block>
+				
+			</div>
+		</div>
+  		<footer th:replace="bookstore/fragment/footer :: footerFragment"></footer>
+  	</body>
+</html>

@@ -29,4 +29,5 @@ public class ReviewVO {
 	private String holiday;
 	private String bookingYn;
 	
+	
 }
