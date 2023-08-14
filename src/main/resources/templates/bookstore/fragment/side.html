@@ -1,14 +1,90 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<th:block th:fragment="sideFragment">
-		
+		<script>
+			$(function(){
+				/*
+				$(".menu_list").hover(function(){
+					$(".sub_menu").removeClass(" active");
+					let subMenu = $(this).find(".sub_menu").addClass(" active");
+				}, function(){
+					
+					setTimeout(function(){
+						$(".sub_menu").removeClass(" active");
+						}, 200);
+				});
+				
+				*/
+				
+				$(".menu_list").on("mouseover focus", function(){
+					$(".menu_list").removeClass(" active");
+					$(this).addClass(" active");
+					$(this).addClass(" bg");
+				    $(this).children(".sub_menu").stop().fadeIn(1);
+				});
+				
+			  	$(".menu_list").on("mouseleave", function(){
+				    $(this).children(".sub_menu").stop().fadeOut(100);
+				    $(this).removeClass(" bg");
+			  	});
+			  	
+				
+			});
+		</script>
 		<div class="side">
-			<div class="side_part d-flex justify-content-between align-items-center">
-				<ul class="menu_part d-flex justify-start">
-					<li>1 메뉴</li>
-					<li>2 메뉴</li>
-					<li>3 메뉴</li>
-					<li>4 메뉴</li>
+			<div class="side_area d-flex justify-content-between align-items-center">
+				<ul class="menu_part d-flex justify-content-start">
+					<li class="menu_list">
+						<a class="menu_link" href="#">전체도서</a>
+						<div class="sub_menu">
+							<ul class="sub_menu_part">
+								<li class="sub_menu_list"><a href="#">소설</a></li>
+								<li class="sub_menu_list"><a href="#">시/에세이</a></li>
+								<li class="sub_menu_list"><a href="#">인문</a></li>
+								<li class="sub_menu_list"><a href="#">가정/육아</a></li>
+								<li class="sub_menu_list"><a href="#">요리</a></li>
+								<li class="sub_menu_list"><a href="#">건강</a></li>
+							</ul>
+							<ul class="sub_menu_part">
+								<li class="sub_menu_list"><a href="#">경제/경영</a></li>
+								<li class="sub_menu_list"><a href="#">자기계발</a></li>
+								<li class="sub_menu_list"><a href="#">종교</a></li>
+								<li class="sub_menu_list"><a href="#">외국어</a></li>
+								<li class="sub_menu_list"><a href="#">여행</a></li>
+								<li class="sub_menu_list"><a href="#">검퓨터/IT</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="menu_list">
+						<a class="menu_link" href="#">신상도서</a>
+						<div class="sub_menu">
+							<ul class="sub_menu_part">
+								<li class="sub_menu_list"><a href="#">국내도서</a></li>
+								<li class="sub_menu_list"><a href="#">외국도서</a></li>
+								<li class="sub_menu_list"><a href="#">eBook</a></li>
+								<li class="sub_menu_list"><a href="#">오디오북</a></li>
+							</ul>
+							<ul class="sub_menu_part">
+								<li class="sub_menu_list"><a href="#">이번주 신간</a></li>
+								<li class="sub_menu_list"><a href="#">이번달 신간</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="menu_list">
+						<a class="menu_link" href="#">온라인마켓</aclass="menu_link">
+					</li>
+					<li class="menu_list">
+						<a class="menu_link" href="#">나의서점</a>
+					</li>
+					<li class="menu_list">
+						<a class="menu_link" href="#">이벤트</a>
+					</li>
+				</ul>
+				<!-- 전체도서 -->
+				<ul class="customer_part d-flex justify-content-end">
+					<li><a class="" href="#">회원가입</a></li>
+					<li><a class="" href="#">로그인</a></li>
+					<li><a class="" href="#">고객센터</a></li>
 				</ul>
 			</div>
 		</div>

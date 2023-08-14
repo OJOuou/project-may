@@ -1,33 +1,84 @@
 #parent_wrapper {
+	width: 98%;
 	height: auto;
   	min-height: 100%;
 	padding-bottom: 220px;
+	margin-left: auto;
+	margin-right: auto;
 }
+
+a {
+	display: inline-block;
+	color: #000; 
+	text-decoration:none !important 
+}
+a:hover { 
+	text-decoration:none !important 
+}
+a:link { 
+	text-decoration: none;
+}
+a:visited { 
+	text-decoration: none;
+}
+
+.w-25 {
+  width: 25% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.w-75 {
+  width: 75% !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+
+.w-10 {
+  width: 10% !important;
+}
+
+.w-20 {
+  width: 20% !important;
+}
+
+.w-30 {
+  width: 30% !important;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+/* w-50, w-100 은 bootstrap.css 에 위치 */
+
+.w-60 {
+  width: 60% !important;
+}
+
+.w-70 {
+  width: 70% !important;
+}
+
+.w-80 {
+  width: 80% !important;
+}
+
+.w-90 {
+  width: 90% !important;
+}
+
+
 
 /******** HEADER 헤더 영역 ********/
 header {
-	padding: 1rem 1.25rem;
+	padding: 1.5rem 1.25rem;
 	background-color: #fefefe;
-}
-
-.side {
-	width: 100%;
-	background-color: skyblue;
-}
-
-.side .side_part{
-	width: 90%;
-}
-
-.menu_part {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-.menu_part li {
-	padding: 8px;
-	width: 240px;
 }
 
 .menu-trigger,
@@ -109,8 +160,110 @@ header {
 }
 /******** HEADER 헤더 영역 ********/
 
+
+/******** SIDE 사이드 영역 ********/
+
+.side {
+	width: 100%;
+}
+
+.side_area{
+	border-bottom: 3px solid purple;
+}
+
+.menu_part,.customer_part,.sub_menu_part {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu_part{
+	width: 60%;
+}
+
+.menu_part .menu_list{
+	position: relative;
+	padding: 8px 20px;
+	width: 20%;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.menu_part .menu_list.active.bg {
+	background-color: purple;
+}
+
+.menu_part .menu_list.active.bg .menu_link {
+	background-color: purple;
+	color: #fff !important;
+}
+
+.menu_part .menu_list .sub_menu {
+	visibility: hidden;
+	position: absolute;
+    top: 46px;
+    left: 0;
+    display: flex;
+	justify-content :space-between;
+	align-items: start;
+	border: 1px solid #e1e1e1;
+	border-radius: 10px;
+	background-color: #fff;
+	width: 360px;
+	z-index: 99;
+}
+
+.menu_part .menu_list.active .sub_menu {
+	visibility: visible;
+}
+
+.sub_menu_part {
+	width: 50%;
+	padding: 1rem 0.5rem;
+}
+
+.sub_menu_part .sub_menu_list{
+	color: rgb(148, 55, 255);
+	font-size: 16px;
+	font-weight: bold;
+	padding: 12px 10px;
+}
+
+.sub_menu_part .sub_menu_list:hover {
+	background-color: rgb(218, 188, 249);
+}
+
+.sub_menu_part .sub_menu_list:hover a {
+	background-color: rgb(218, 188, 249);
+	color: rgb(84, 47, 238) !important;
+}
+
+
+
+.customer_part {
+	width: 40%;
+}
+
+.customer_part li {
+	padding: 8px 16px;
+	text-align: center;
+}
+.customer_part li a{
+	font-size: 16px;
+	font-weight: bold;
+	color: rgb(121, 121, 121);
+}
+
+/******** SIDE 사이드 영역 ********/
+
+
+
 /******** FOOTER 푸터 영역 ********/
 footer {
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
 	height: 220px;
   	position: relative;
   	transform: translateY(-100%);
@@ -118,7 +271,52 @@ footer {
 }
 /******** FOOTER 푸터 영역 ********/
 
-
+/********* contents 부분 공통 *********/
 .body_wrapper {
-	background-color: rgb(63, 231, 95);
+	background-color: #fff;
 }
+
+
+
+/********* main 메인 *********/
+
+.event_part {
+	margin-top: 40px;
+}
+
+.goods_part {
+	padding: 0 1rem;
+	margin-top: 40px;
+}
+
+.goods_part .part_title{
+	margin-bottom: 30px;
+	font-size: 28px;
+}
+.marketing {
+	width: 100%;
+    padding-left: var(--bs-gutter-x,.75rem);
+    padding-right: var(--bs-gutter-x,.75rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main_book_title {
+	margin-top: 10px;
+}
+
+.main_book_detail {
+	min-height: 48px;
+	width: 100%;
+	text-overflow: ellipsis;
+ 	overflow: hidden;
+  	display: -webkit-box;
+  	-webkit-box-orient: vertical;
+  	-webkit-line-clamp: 2; 
+}
+
+.book_cover {
+	width: 220px;
+	height: 347px;
+}
+
