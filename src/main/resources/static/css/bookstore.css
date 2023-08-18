@@ -1,3 +1,13 @@
+#join_wrapper {
+	width: 800px;
+	height: auto;
+  	min-height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 80px;
+	margin-bottom: 40px;
+}
+
 #parent_wrapper {
 	width: 98%;
 	height: auto;
@@ -271,11 +281,153 @@ footer {
 }
 /******** FOOTER 푸터 영역 ********/
 
+
+
+/********* 공통 *********/
+
+.btn_area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.basic_btn {
+	padding: 4px 12px;
+	border: 1px solid purple;
+	border-radius: 3px;
+	background-color: purple;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.basic_btn.regist {
+	width: 120px;
+	padding: 6px 14px !important;
+	border: 1px solid purple !important;
+	background-color: #fff !important;
+	color: #222 !important;
+	font-size: 18px !important;
+}
+
+.basic_btn.cancel {
+	width: 120px;
+	padding: 6px 14px !important;
+	border: 1px solid #222 !important;
+	background-color: #fff !important;
+	color: #222 !important;
+	font-size: 18px !important;
+}
+
+
+
 /********* contents 부분 공통 *********/
 .body_wrapper {
 	background-color: #fff;
 }
 
+
+
+
+
+
+
+/********* 회원가입 *********/
+
+.join_sub {
+	padding: 0 60px;
+}
+
+.join_sub h2 {
+	text-align: left;
+	border-bottom: 1px solid purple;	
+	padding-bottom: 4px;
+}
+
+.join_form {
+	margin-top: 60px;
+	margin-bottom: 60px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.join_form .input_row {
+	width: 700px !important;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 0.5rem;
+  	margin-bottom: 0.5rem;
+	
+}
+.input_row p {
+	width: 240px !important;
+	text-align: right;
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.input_row p span {
+	color: purple;
+	font-size: 18px;
+	font-weight: 300;
+	margin-left: 3px;
+}
+
+.input_row input[type=text] {
+	width: 250px !important;
+	padding: 4px 6px;
+	border: 1px solid #e1e1e1;
+	border-radius: 3px;
+	font-weight: 300;
+}
+
+.join_agree {
+	margin-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.join_agree .agree_row {
+	width: 400px !important;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 0.3rem;
+  	margin-bottom: 0.3rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.agree_row input[type=checkbox] {
+	width: 20px;
+	height: 20px;
+}
+
+.agree_row label {
+	margin-left: 0.5rem;
+	font-size: 15px;
+}
+
+.agree_row label.all_agree {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.agree_row label .agree_require {
+	color: blue;
+}
+.agree_row .agree_detail {
+	font-size: 14px;
+	color: rgb(94, 94, 94);
+	text-decoration: underline;
+	margin: 0;
+	text-align: right;
+	cursor: pointer;
+}
 
 
 /********* main 메인 *********/

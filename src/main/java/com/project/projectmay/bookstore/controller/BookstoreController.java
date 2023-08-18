@@ -23,4 +23,9 @@ public class BookstoreController {
 	public String viewSalesBookDetail(HttpServletRequest reqeust) throws Exception {
 		return "bookstore/view/sales/bookDetail";
 	}
+	
+	@GetMapping("/join")
+	public String viewJoin(HttpServletRequest reqeust) throws Exception {
+		return "bookstore/view/join/join";
+	}
 }
