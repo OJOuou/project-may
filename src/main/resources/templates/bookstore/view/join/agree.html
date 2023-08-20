@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+	<html lang="ko" >
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    	<script src="/bootstrap/js/bootstrap.min.js"></script>
+    	<script src="/js/common.js"></script>
+    	
+    	<link rel="stylesheet" type="text/css" href="/css/bookstore.css">
+    	<title>새벽서점</title>
+	</head>
+	<body>
+		<div id="join_wrapper">
+			<div class="text-center py-3">
+				<h2 class="">회원가입</h2>
+			</div>
+			
+			<div class="join_agree">
+				<div class="all_agree">
+					<input type="checkbox" id="agreeAll" />
+					<label for="agreeAll" >약관 전체동의</label>
+				</div>
+				<div class="agree_title">
+					<p>필수 동의 항목</p>
+				</div>
+				<div class="agree_row">
+					<input type="checkbox" id="agree1" />
+					<label for="agree1" >[필수] 이용약관</label>
+				</div>
+				<div class="agree_row">
+					<input type="checkbox" id="agree2" />
+					<label for="agree2" >[필수] 전자금융거래 이용약관</label>
+				</div>
+				<div class="agree_row">
+					<input type="checkbox" id="agree3" />
+					<label for="agree3" >[필수] 개인정보 제 3자 제공동의</label>
+				</div>
+				
+				<div class="agree_title">
+					<p>선택 동의 항목</p>
+				</div>
+				<div class="agree_row">
+					<input type="checkbox" id="agree4" />
+					<label for="agree4" >[선택] 개인정보 수집동의서</label>
+				</div>
+				<div class="agree_row">
+					<input type="checkbox" id="agree5" />
+					<label for="agree5" >[선택] 위치기반서비스 이용약관</label>
+				</div>
+			</div>
+			<div class="btn_area">
+<!--				<div class="basic_btn cancel">취소</div>-->
+				<div class="basic_btn regist" onclick="location.href='/bookstore/join'">다음단계</div>
+			</div>
+		</div>
+  	</body>
+</html>

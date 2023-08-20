@@ -289,7 +289,7 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 .basic_btn {
@@ -301,6 +301,7 @@ footer {
 	font-size: 14px;
 	font-weight: bold;
 	text-align: center;
+	cursor: pointer;
 }
 
 .basic_btn.regist {
@@ -336,53 +337,69 @@ footer {
 
 /********* 회원가입 *********/
 
-.join_sub {
-	padding: 0 60px;
-}
-
-.join_sub h2 {
-	text-align: left;
-	border-bottom: 1px solid purple;	
-	padding-bottom: 4px;
-}
 
 .join_form {
 	margin-top: 60px;
 	margin-bottom: 60px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .join_form .input_row {
-	width: 700px !important;
+	position: relative;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	padding: 0 0 0 240px;
 	margin-top: 0.5rem;
   	margin-bottom: 0.5rem;
 	
+	
 }
-.input_row p {
-	width: 240px !important;
-	text-align: right;
-	margin: 0;
+
+.join_form .join_label {
+	position: absolute;
+	top: 6px;
+	left: 252px;
 	font-size: 14px;
 	font-weight: bold;
+	color: #413c3c
 }
 
-.input_row p span {
-	color: purple;
-	font-size: 18px;
-	font-weight: 300;
-	margin-left: 3px;
-}
-
-.input_row input[type=text] {
-	width: 250px !important;
-	padding: 4px 6px;
+.input_row input[type=text], .input_row input[type=password] {
+	width: 320px ;
+	padding: 4px 6px 4px 110px;
 	border: 1px solid #e1e1e1;
 	border-radius: 3px;
 	font-weight: 300;
+}
+
+.input_row input[type=text]::placeholder, .input_row input[type=password]::placeholder {
+	font-size: 14px;
+	color:rgb(121, 121, 121)
+}
+
+.input_row .join_radio_label {
+	font-size: 14px;
+	margin-left: 0.5rem;
+}
+
+.input_info_expired {
+	padding: 0 180px;
+	margin-top: 1rem;
+  	margin-bottom: 1rem;
+}
+
+.input_row input[type=radio] {
+	margin-left: 1rem;
+}
+
+.join_form .valid {
+	/* display: none; */
+	text-align: left;
+	padding: 0 0 6px 254px;
+	margin: 2px 0 0 0;
+	color: red;
+	font-size: 12px;
+	font-weight: bold;
 }
 
 .join_agree {
@@ -391,10 +408,38 @@ footer {
 	margin-right: auto;
 }
 
-.join_agree .agree_row {
-	width: 400px !important;
+.join_agree .all_agree {
+	width: 220px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.join_agree .all_agree input[type=checkbox] {
+	width: 24px;
+	height: 24px;
+}
+
+.join_agree .all_agree label {
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 0.5rem;
+}
+
+.join_agree .agree_title {
+	width: 220px;
+	padding-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	font-weight: bold;
+}
+
+.join_agree .agree_row {
+	width: 220px;
+	display: flex;
+	justify-content: flex-start;
 	align-items: center;
 	margin-top: 0.3rem;
   	margin-bottom: 0.3rem;
@@ -409,25 +454,9 @@ footer {
 
 .agree_row label {
 	margin-left: 0.5rem;
-	font-size: 15px;
-}
-
-.agree_row label.all_agree {
-	font-size: 16px;
-	font-weight: bold;
-}
-
-.agree_row label .agree_require {
-	color: blue;
-}
-.agree_row .agree_detail {
 	font-size: 14px;
-	color: rgb(94, 94, 94);
-	text-decoration: underline;
-	margin: 0;
-	text-align: right;
-	cursor: pointer;
 }
+
 
 
 /********* main 메인 *********/

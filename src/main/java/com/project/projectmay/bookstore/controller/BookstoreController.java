@@ -28,4 +28,9 @@ public class BookstoreController {
 	public String viewJoin(HttpServletRequest reqeust) throws Exception {
 		return "bookstore/view/join/join";
 	}
+	
+	@GetMapping("/agree")
+	public String viewAgree(HttpServletRequest reqeust) throws Exception {
+		return "bookstore/view/join/agree";
+	}
 }
